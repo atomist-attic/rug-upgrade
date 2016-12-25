@@ -1,0 +1,18 @@
+@description "breaking change from PR 112"
+editor UpgradeFrom0_7_1
+
+# precondition IsRugArchive
+# ideally: check that version < 0.8.0
+
+#TODO: increment project version
+
+# UpdateRugVersion package_version="0.8.0", manifest_version="0.8.0"
+
+with Project p
+  with File f when { f.name().endsWith(".rug") } begin
+    do replace "with file" "with File"
+    do replace "with project" "with Project"
+    do replace "with java.class" "with JavaType"
+    do replace "with java.source" "with JavaSource"
+    do replace "with pom" "with Pom"
+  end
