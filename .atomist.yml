@@ -33,3 +33,18 @@ generator:
   parameters:
     - "project_name": "rug-upgrade"
 
+---
+kind: "operation"
+client: "rug-cli 0.18.1"
+editor:
+  name: "atomist-rugs.rug-upgrade.ConvertRugToTypeScript"
+  group: "atomist-rugs"
+  artifact: "rug-upgrade"
+  version: "0.1.0"
+  origin:
+    repo: "n/a"
+    branch: "n/a"
+    sha: "n/a"
+  parameters:
+    - "rug_name": "UpgradeFrom0_7_1"
+
