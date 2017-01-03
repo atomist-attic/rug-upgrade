@@ -1,6 +1,6 @@
 # rug-upgrade
 
-My new project
+PRELIMINARY: these rugs are not published. They're still in testing.
 
 See the [Rug documentation][rug] for more information on Rug Archives.
 
@@ -8,27 +8,14 @@ See the [Rug documentation][rug] for more information on Rug Archives.
 
 ## Rugs
 
-### AddReadme
+### UpgradeFrom0_7_1
 
-The AddReadme Editor adds a GitHub-like `README.md` to a project.
+upgrades .rug files from the syntax used in Rug 0.7.1 to the syntax used in Rug 0.8.0
 
-#### Prerequisites
-
-Before running this Editor, you must have the following prerequisites
-satisfied.
-
-*   A source code repository
 
 #### Parameters
 
 To run this editor, you must supply the following parameters.
-
-Name | Required | Default | Description
------|----------|---------|------------
-`project_name` | Yes | | A valid GitHub repository name.  It must be 21 characters or less to avoid truncating name when the its Slack channel is created.
-`description` | No | My new project | A brief description of the project with at least one character and fewer than 90.
-
-[semver]: http://semver.org
 
 #### Running
 
@@ -36,14 +23,8 @@ Run it as follows:
 
 ```
 $ cd to/the/repo
-$ rug edit mygroup:rug-upgrade:AddReadme \
-    project_name=fun-project \
-    description="A project that needs a README"
+$ rug edit atomist-rugs:rug-upgrade:UpgradeFrom0_7_1 
 ```
-
-This will create a simple `README.md` file in the top-level directory
-of the source code repository.  If you are happy with the change,
-commit the changes.
 
 ## Support
 
