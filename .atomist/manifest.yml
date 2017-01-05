@@ -1,6 +1,6 @@
 group: atomist-rugs
 artifact: rug-upgrade
 version: "0.1.0"
-requires: "(0.7.9,1.0.0)"
+requires: "[0.8.0,1.0.0)"
 dependencies:
 extensions:

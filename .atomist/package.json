@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/atomist/licensing-editors#readme",
   "dependencies": {
-    "@atomist/rug": "0.8.0-SNAPSHOT"
+    "@atomist/rug": "0.8.0"
   }
 }
