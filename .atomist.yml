@@ -109,3 +109,18 @@ editor:
   parameters:
     - "rug_name": "ConvertRugToTypeScript"
 
+---
+kind: "operation"
+client: "rug-cli 0.24.0"
+editor:
+  name: "atomist-rugs.common-editors.AddChangeLog"
+  group: "atomist-rugs"
+  artifact: "common-editors"
+  version: "0.7.0"
+  origin:
+    repo: "atomist-rugs/common-editors.git"
+    branch: "master"
+    sha: "622ed10"
+  parameters:
+    - "repo_slug": "atomist-rugs/rug-upgrade"
+
