@@ -124,3 +124,31 @@ editor:
   parameters:
     - "repo_slug": "atomist-rugs/rug-upgrade"
 
+---
+kind: "operation"
+client: "rug-cli 0.25.0"
+editor:
+  name: "AddTypeScriptEditor"
+  group: "atomist-rugs"
+  artifact: "rug-editors"
+  version: "0.11.0"
+  origin:
+    repo: "git@github.com:atomist-rugs/rug-editors"
+    branch: "master"
+    sha: "e9ca710*"
+  parameters:
+    - "editor_name": "TestsToTypeScript"
+    - "description": "convert Rug DSL BDD tests to TypeScript"
+
+---
+kind: "operation"
+client: "rug-cli 0.25.0"
+editor:
+  name: "TestsToTypeScript"
+  group: "atomist-rugs"
+  artifact: "rug-upgrade"
+  version: "0.2.0"
+  origin:
+    repo: "git@github.com:atomist-rugs/rug-upgrade.git"
+    branch: "master"
+    sha: "db71425*"

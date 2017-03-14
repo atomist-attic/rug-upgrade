@@ -48,6 +48,33 @@ to TypeScript.  The conversion is not perfect, so please review the
 changes and run your tests.  Once everything is working, remove the
 original `.rug` file.
 
+### TestsToTypeScript
+
+Convert Rug DSL BDD tests to TypeScript.  This is not perfect.  It
+aims to avoid conflicts rather than eliminating duplication.  This
+means that the resulting steps can likely be consolidated if you have
+several similar scenarios.
+
+#### Prerequisites
+
+A Rug project with Rug DSL BDD tests.
+
+#### Parameters
+
+This Rug takes no parameters.
+
+#### Running
+
+Run this Rug as follows:
+
+```
+$ cd project/directory
+$ rug edit atomist-rugs:rug-editors:TestsToTypeScript
+```
+
+This will generate TypeScript Cucumber/Gherkin tests from each of the
+DSL `.rt` test files.  The DSL tests will not be touched.
+
 ### UpdateRugVersion
 
 The UpdateRugVersion editor updates the version of the rug dependency
