@@ -23,6 +23,11 @@ Test release
 
 -   Updated to rug 0.13.0, including tests using TestsToTypeScript
 
+### Removed
+
+-   UpgradeFrom0_7_1
+-   ConvertRugToTypeScript
+
 ## [0.1.0] - 2017-01-01
 
 [0.1.0]: https://github.com/atomist-rugs/rug-upgrade/tree/0.1.0

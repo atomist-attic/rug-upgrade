@@ -7,47 +7,6 @@ version of Rug to the next.
 
 ## Rugs
 
-### ConvertRugToTypeScript
-
-The ConvertRugToTypeScript converts a DSL Rug editor to a TypeScript
-Rug editor.  It is not perfect, so be sure to check its results.
-
-**WARNING!** This editor only works with
-the [`jessitron/pretty-transpile` branch of rug][transpile] at
-present.
-
-[transpile]: https://github.com/atomist/rug/tree/jessitron/pretty-transpile
-
-#### Prerequisites
-
-Before running this editor, you must have the following prerequisites
-satisfied.
-
-*   A Rug archive source code repository with a DSL Rug
-
-#### Parameters
-
-To run this editor, you must supply the following parameters.
-
-Name | Required | Default | Description
------|----------|---------|------------
-`rug_name` | Yes | | The name of the DSL Rug in the project to convert to TypeScript
-
-#### Running
-
-Run it as follows:
-
-```
-$ cd rug/project/directory
-$ rug edit atomist-rugs:rug-editors:ConvertRugToTypeScript \
-    rug_name=SomeOldDSLRug
-```
-
-This will convert the `SomeOldDSLRug` editor from the deprecated DSL
-to TypeScript.  The conversion is not perfect, so please review the
-changes and run your tests.  Once everything is working, remove the
-original `.rug` file.
-
 ### TestsToTypeScript
 
 Convert Rug DSL BDD tests to TypeScript.  This is not perfect.  It
@@ -115,27 +74,6 @@ $ rug edit atomist-rugs:rug-editors:UpdateRugVersion \
 This will update the rug version in the `.atomist/manifest.yml` and,
 if present, the `.atomist/package.json`.  If there is no `.atomist`
 directory, nothing will be done.
-
-### UpgradeFrom0_7_1
-
-Upgrades Rug DSL files from the syntax used in Rug 0.7.1 to the syntax
-used in Rug 0.8.0.
-
-#### Parameters
-
-To run this editor, you must supply the following parameters.
-
-#### Running
-
-Run it as follows:
-
-```
-$ cd to/the/repo
-$ rug edit atomist-rugs:rug-upgrade:UpgradeFrom0_7_1
-```
-
-This will update all the `.rug` files in the project to conform to Rug
-0.8.0.
 
 ## Support
 
