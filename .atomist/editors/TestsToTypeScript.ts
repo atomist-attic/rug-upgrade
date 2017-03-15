@@ -68,7 +68,7 @@ import { Given, When, Then, ProjectScenarioWorld } from "@atomist/rug/test/proje
                     ts.push(lines[i]);
                 } else if (/^\s*scenario\b/.test(lines[i])) {
                     scenario = lines[i].replace(/^\s*scenario\s+/, "");
-                    gherkin.push("\n\n  Scenario: " + scenario + "\n");
+                    gherkin.push("\n\n  Scenario: " + scenario);
                     variables = [];
                 } else if (/^\s*let\b/.test(lines[i])) {
                     variables.push(lines[i]);
