@@ -77,16 +77,20 @@ import { Given, When, Then, ProjectScenarioWorld } from "@atomist/rug/test/proje
                     let givenTsLines: string[] = [];
                     lines[i] = lines[i].replace(/^\s*given\s*/, "");
                     for (; ! /^\s*when\b/.test(lines[i]); ++i) {
-                        if (/^\s*"[^"]+"\s*=/.test(lines[i])) {
-                            let fileMatch = /"([^"]+)"/.exec(lines[i]);
+                        if (/=/.test(lines[i])) {
+                            let dqRE = /^\s*"([^"]+)"\s*=/;
+                            let sqRE = /^\s*'([^']+)'\s*=/;
+                            let sRE = /^\s*(\S+)\s*=/;
+                            let filePathREs: RegExp[] = [dqRE, sqRE, sRE];
                             let filePath = "";
-                            if (fileMatch != null) {
-                                if (fileMatch.length < 2) {
-                                    console.log("failed to capture file name:" + lines[i]);
-                                } else {
-                                    filePath = fileMatch[1];
+                            for (let re of filePathREs) {
+                                let filePathMatch = re.exec(lines[i]);
+                                if (filePathMatch != null && filePathMatch.length > 1) {
+                                    filePath = filePathMatch[1];
+                                    break;
                                 }
-                            } else {
+                            }
+                            if (filePath == "") {
                                 console.log("failed to match file name:" + lines[i]);
                                 continue;
                             }
@@ -116,6 +120,14 @@ import { Given, When, Then, ProjectScenarioWorld } from "@atomist/rug/test/proje
                                 }
                             } else if (/=\s*"/.test(lines[i])) {
                                 let contentsMatch = /"(.*)"/.exec(lines[i]);
+                                if (contentsMatch != null && contentsMatch.length > 1) {
+                                    contents = contentsMatch[1];
+                                } else {
+                                    console.log("failed to match contents:" + lines[i]);
+                                    continue;
+                                }
+                            } else if (/=\s*'/.test(lines[i])) {
+                                let contentsMatch = /'(.*)'/.exec(lines[i]);
                                 if (contentsMatch != null && contentsMatch.length > 1) {
                                     contents = contentsMatch[1];
                                 } else {
