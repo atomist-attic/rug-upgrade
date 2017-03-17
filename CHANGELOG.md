@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/atomist-rugs/rug-upgrade/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/atomist-rugs/rug-upgrade/compare/0.3.0...HEAD
+
+## [0.3.0] - 2017-03-17
+
+[0.3.0]: https://github.com/atomist-rugs/rug-upgrade/compare/0.2.0...0.3.0
+
+Quote release
+
+### Changed
+
+-   TestsToTypeScript handles quoting better
 
 ## [0.2.0] - 2017-03-14
 
