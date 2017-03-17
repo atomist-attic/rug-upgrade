@@ -129,13 +129,9 @@ import { Given, When, Then, ProjectScenarioWorld } from "@atomist/rug/test/proje
                             givenGherkinLines.push(givenName);
                             givenTsLines.push(`Given("${givenName}", p => { p.addFile("${filePath}", \`${contents}\`) });`, "");
                         } else if (/\s*Empty\b/.test(lines[i])) {
-                            let givenName = "nothing for " + scenario;
-                            givenGherkinLines.push(givenName);
-                            givenTsLines.push(`Given("${givenName}", p => { });`, "");
+                            givenGherkinLines.push("an empty project");
                         } else if (/\s*ArchiveRoot\b/.test(lines[i])) {
-                            let givenName = 'archive root for ' + scenario;
-                            givenGherkinLines.push(givenName);
-                            givenTsLines.push(`Given("${givenName}", p => { p.copyEditorBackingFilesPreservingPath(""); });`, "");
+                            givenGherkinLines.push("the archive root");
                         } else if (lines[i].length > 0) {
                             console.log("failed to match given line:" + lines[i]);
                         }
@@ -194,8 +190,20 @@ ${varString}
                             + " for " + scenario;
                         let predicate = "";
                         if (predicateString == "NoChange") {
-                            predicateName = "no change for " + scenario;
-                            predicate = `!world.modificationsMade()`;
+                            gherkin.push("    Then no changes were made");
+                            continue;
+                        } else if (predicateString == "NotApplicable") {
+                            gherkin.push("    Then no changes were made");
+                            continue;
+                        } else if (predicateString == "InvalidParameters") {
+                            gherkin.push("    Then parameters were invalid");
+                            continue;
+                        } else if (predicateString == "MissingParameters") {
+                            gherkin.push("    Then parameters were invalid");
+                            continue;
+                        } else if (predicateString == "ShouldFail") {
+                            gherkin.push("    Then it should fail");
+                            continue;
                         } else if (/^\{/.test(predicateString)) {
                             predicate = predicateString.substr(1).replace(/\}\s*$/, "").trim().replace(/result/g, "p");
                         } else {
