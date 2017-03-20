@@ -193,6 +193,10 @@ ${varString}
                     ts.push(tsWhen, "");
                 } else if (/^\s*then\b/.test(lines[i])) {
                     lines[i] = lines[i].replace(/\s*then\s*/, "");
+                    let parameterSet = false;
+                    let changeSet = false;
+                    let newGherkin: string[] = [];
+                    let newTS: string[] = [];
                     for (; i < lines.length && ! /^\s*scenario\b/.test(lines[i]); ++i) {
                         if (! /\S/.test(lines[i])) {
                             continue;
@@ -202,19 +206,29 @@ ${varString}
                             + " for " + scenario;
                         let predicate = "";
                         if (predicateString == "NoChange") {
-                            gherkin.push("    Then no changes were made");
+                            newGherkin.push("    Then no changes were made");
+                            changeSet = true;
                             continue;
                         } else if (predicateString == "NotApplicable") {
-                            gherkin.push("    Then no changes were made");
+                            newGherkin.push("    Then no changes were made");
+                            changeSet = true;
                             continue;
                         } else if (predicateString == "InvalidParameters") {
-                            gherkin.push("    Then parameters were invalid");
+                            newGherkin.push("    Then parameters were invalid");
+                            newGherkin.push("    Then no changes were made");
+                            parameterSet = true;
+                            changeSet = true;
                             continue;
                         } else if (predicateString == "MissingParameters") {
-                            gherkin.push("    Then parameters were invalid");
+                            newGherkin.push("    Then parameters were invalid");
+                            newGherkin.push("    Then no changes were made");
+                            parameterSet = true;
+                            changeSet = true;
                             continue;
                         } else if (predicateString == "ShouldFail") {
-                            gherkin.push("    Then it should fail");
+                            newGherkin.push("    Then it should fail");
+                            parameterSet = true;
+                            changeSet = true;
                             continue;
                         } else if (/^\{/.test(predicateString)) {
                             predicate = predicateString.substr(1).replace(/\}\s*$/, "").trim().replace(/result/g, "p");
@@ -235,15 +249,23 @@ ${varString}
                             }
                             predicate = `p.${fName}(${parameters.join(", ")})`;
                         }
-                        gherkin.push("    Then " + predicateName);
+                        newGherkin.push("    Then " + predicateName);
                         let varString = this.variablesToString(variables);
                         let tsThen = (`Then("${predicateName}", (p, world) => {
 ${varString}
     return ${predicate};
 });`);
-                        ts.push(tsThen, "");
+                        newTS.push(tsThen, "");
                     }
                     --i;
+                    if (!parameterSet) {
+                        gherkin.push("    Then parameters were valid");
+                    }
+                    if (!changeSet) {
+                        gherkin.push("    Then changes were made");
+                    }
+                    gherkin.push(...newGherkin);
+                    ts.push(...newTS);
                 } else if (lines[i].length > 0) {
                     gherkin.push("# " + lines[i]);
                 }
