@@ -202,7 +202,8 @@ ${varString}
                             continue;
                         }
                         let predicateString = lines[i].trim().replace(/^and\s+/, "");
-                        let predicateName = predicateString.replace(/["'{}]/g, "").replace(/!/g, "not ").trim()
+                        let predicateName = predicateString.replace(/\s*!\s*/g, " not ")
+                            .replace(/[^A-Za-z0-9 ]/g, " ").replace(/ +/g, " ").trim()
                             + " for " + scenario;
                         let predicate = "";
                         if (predicateString == "NoChange") {
