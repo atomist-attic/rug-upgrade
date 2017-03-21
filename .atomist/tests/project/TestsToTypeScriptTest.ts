@@ -17,7 +17,7 @@
 import { Project } from "@atomist/rug/model/Project";
 import { Given, When, Then, ProjectScenarioWorld } from "@atomist/rug/test/project/Core";
 
-Given("a file named .atomist/tests/Sample.rt for TestsToTypeScript converts sample test", p => {
+Given("a sample DSL test", p => {
     p.addFile(".atomist/tests/Sample.rt", `
 scenario Jason Isbell
 given Empty
@@ -26,33 +26,27 @@ then NoChange
 `)
 });
 
-When("TestsToTypeScript for TestsToTypeScript converts sample test", (p, world) => {
+When("TestsToTypeScript edits the project", (p, world) => {
     let psworld = world as ProjectScenarioWorld;
     let editor = psworld.editor("TestsToTypeScript");
-
     psworld.editWith(editor, {});
 });
 
-Then("fileExists .atomist/tests/project/SampleTest.feature for TestsToTypeScript converts sample test", (p, world) => {
+const featurePath = ".atomist/tests/project/SampleTest.feature";
+const tsPath = ".atomist/tests/project/SampleTest.ts";
 
-    return p.fileExists(".atomist/tests/project/SampleTest.feature");
+Then("the sample feature files exists", (p, world) => {
+    return p.fileExists(featurePath);
 });
 
-Then("fileExists .atomist/tests/project/SampleTest.ts for TestsToTypeScript converts sample test", (p, world) => {
-
-    return p.fileExists(".atomist/tests/project/SampleTest.ts");
+Then("the sample feature file starts with an empty project", (p, world) => {
+    return p.fileContains(featurePath, "Given an empty project");
 });
 
-Given("archive root for TestsToTypeScript converts archive tests", p => { p.copyEditorBackingFilesPreservingPath(""); });
-
-When("TestsToTypeScript for TestsToTypeScript converts archive tests", (p, world) => {
-    let psworld = world as ProjectScenarioWorld;
-    let editor = psworld.editor("TestsToTypeScript");
-
-    psworld.editWith(editor, {});
+Then("the sample feature file asserts no change", (p, world) => {
+    return p.fileContains(featurePath, "Then no changes were made");
 });
 
-Then("no change for TestsToTypeScript converts archive tests", (p, world) => {
-
-    return !world.modificationsMade();
+Then("the sample TypeScript test file exists", (p, world) => {
+    return p.fileExists(tsPath);
 });

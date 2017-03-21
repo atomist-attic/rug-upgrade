@@ -23,18 +23,18 @@ Feature: Tests from UpdateRugVersion.rt
 
     Given a file named .atomist/manifest.yml for UpdateRugVersion should update the version in a manifest.yml
     When UpdateRugVersion manifest_version is v, package_version is ~11.9.2 for UpdateRugVersion should update the version in a manifest.yml
-    Then fileContains .atomist/manifest.yml  requires:  + v + for UpdateRugVersion should update the version in a manifest.yml
-    Then not result.fileContains(.atomist/manifest.yml, 0.6.0) for UpdateRugVersion should update the version in a manifest.yml
-    Then not result.fileContains(.atomist/manifest.yml, 11.9.2) for UpdateRugVersion should update the version in a manifest.yml
+    Then fileContains atomist manifest yml requires v for UpdateRugVersion should update the version in a manifest yml
+    Then not result fileContains atomist manifest yml 0 6 0 for UpdateRugVersion should update the version in a manifest yml
+    Then not result fileContains atomist manifest yml 11 9 2 for UpdateRugVersion should update the version in a manifest yml
 
 
   Scenario: UpdateRugVersion should update to version range in a manifest.yml
 
     Given a file named .atomist/manifest.yml for UpdateRugVersion should update to version range in a manifest.yml
     When UpdateRugVersion manifest_version is v, package_version is ~11.9.2 for UpdateRugVersion should update to version range in a manifest.yml
-    Then fileContains .atomist/manifest.yml  requires:  + v + for UpdateRugVersion should update to version range in a manifest.yml
-    Then not result.fileContains(.atomist/manifest.yml, 0.6.0) for UpdateRugVersion should update to version range in a manifest.yml
-    Then not result.fileContains(.atomist/manifest.yml, 11.9.2) for UpdateRugVersion should update to version range in a manifest.yml
+    Then fileContains atomist manifest yml requires v for UpdateRugVersion should update to version range in a manifest yml
+    Then not result fileContains atomist manifest yml 0 6 0 for UpdateRugVersion should update to version range in a manifest yml
+    Then not result fileContains atomist manifest yml 11 9 2 for UpdateRugVersion should update to version range in a manifest yml
 
 
   Scenario: UpdateRugVersion should update the version in a package.json
@@ -42,10 +42,10 @@ Feature: Tests from UpdateRugVersion.rt
     Given a file named .atomist/manifest.yml for UpdateRugVersion should update the version in a package.json
     Given a file named .atomist/package.json for UpdateRugVersion should update the version in a package.json
     When UpdateRugVersion manifest_version is v, package_version is ~11.9.2 for UpdateRugVersion should update the version in a package.json
-    Then fileContains .atomist/package.json  @atomist/rug: ~11.9.2 for UpdateRugVersion should update the version in a package.json
-    Then fileContains .atomist/package.json  @college/dtc: ^3.5.7 for UpdateRugVersion should update the version in a package.json
-    Then not result.fileContains(.atomist/package.json, 0.6.0) for UpdateRugVersion should update the version in a package.json
-    Then not result.fileContains(.atomist/package.json, v) for UpdateRugVersion should update the version in a package.json
+    Then fileContains atomist package json atomist rug 11 9 2 for UpdateRugVersion should update the version in a package json
+    Then fileContains atomist package json college dtc 3 5 7 for UpdateRugVersion should update the version in a package json
+    Then not result fileContains atomist package json 0 6 0 for UpdateRugVersion should update the version in a package json
+    Then not result fileContains atomist package json v for UpdateRugVersion should update the version in a package json
 
 
   Scenario: UpdateRugVersion should update the version in a squashed package.json
@@ -53,10 +53,10 @@ Feature: Tests from UpdateRugVersion.rt
     Given a file named .atomist/manifest.yml for UpdateRugVersion should update the version in a squashed package.json
     Given a file named .atomist/package.json for UpdateRugVersion should update the version in a squashed package.json
     When UpdateRugVersion for UpdateRugVersion should update the version in a squashed package.json
-    Then fileContains .atomist/package.json  @atomist/rug: ~11.9.2 for UpdateRugVersion should update the version in a squashed package.json
-    Then fileContains .atomist/package.json  @college/dtc: ^3.5.7 for UpdateRugVersion should update the version in a squashed package.json
-    Then not result.fileContains(.atomist/package.json, 0.6.0) for UpdateRugVersion should update the version in a squashed package.json
-    Then not result.fileContains(.atomist/package.json, manifest_version) for UpdateRugVersion should update the version in a squashed package.json
+    Then fileContains atomist package json atomist rug 11 9 2 for UpdateRugVersion should update the version in a squashed package json
+    Then fileContains atomist package json college dtc 3 5 7 for UpdateRugVersion should update the version in a squashed package json
+    Then not result fileContains atomist package json 0 6 0 for UpdateRugVersion should update the version in a squashed package json
+    Then not result fileContains atomist package json manifest version for UpdateRugVersion should update the version in a squashed package json
 
 
   Scenario: UpdateRugVersion should do nothing if not a Rug Archive project

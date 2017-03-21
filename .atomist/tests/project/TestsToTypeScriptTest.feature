@@ -20,15 +20,15 @@ Feature: Tests from TestsToTypeScript.rt
 
 
   Scenario: TestsToTypeScript converts sample test
-
-    Given a file named .atomist/tests/Sample.rt for TestsToTypeScript converts sample test
-    When TestsToTypeScript for TestsToTypeScript converts sample test
-    Then fileExists .atomist/tests/project/SampleTest.feature for TestsToTypeScript converts sample test
-    Then fileExists .atomist/tests/project/SampleTest.ts for TestsToTypeScript converts sample test
+    Given a sample DSL test
+    When TestsToTypeScript edits the project
+    Then the sample feature files exists
+    Then the sample feature file starts with an empty project
+    Then the sample feature file asserts no change
+    Then the sample TypeScript test file exists
 
 
   Scenario: TestsToTypeScript converts archive tests
-
-    Given archive root for TestsToTypeScript converts archive tests
-    When TestsToTypeScript for TestsToTypeScript converts archive tests
-    Then no change for TestsToTypeScript converts archive tests
+    Given the archive root
+    When TestsToTypeScript edits the project
+    Then no changes were made

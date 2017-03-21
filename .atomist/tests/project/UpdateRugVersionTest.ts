@@ -34,17 +34,17 @@ When("UpdateRugVersion manifest_version is v, package_version is ~11.9.2 for Upd
     psworld.editWith(editor, { manifest_version: v, package_version: "~11.9.2", v: "7.4.3" });
 });
 
-Then("fileContains .atomist/manifest.yml  requires:  + v + for UpdateRugVersion should update the version in a manifest.yml", (p, world) => {
+Then("fileContains atomist manifest yml requires v for UpdateRugVersion should update the version in a manifest yml", (p, world) => {
     let v = "7.4.3";
     return p.fileContains(".atomist/manifest.yml", 'requires: "' + v + '"');
 });
 
-Then("not result.fileContains(.atomist/manifest.yml, 0.6.0) for UpdateRugVersion should update the version in a manifest.yml", (p, world) => {
+Then("not result fileContains atomist manifest yml 0 6 0 for UpdateRugVersion should update the version in a manifest yml", (p, world) => {
     let v = "7.4.3";
     return !p.fileContains(".atomist/manifest.yml", "0.6.0");
 });
 
-Then("not result.fileContains(.atomist/manifest.yml, 11.9.2) for UpdateRugVersion should update the version in a manifest.yml", (p, world) => {
+Then("not result fileContains atomist manifest yml 11 9 2 for UpdateRugVersion should update the version in a manifest yml", (p, world) => {
     let v = "7.4.3";
     return !p.fileContains(".atomist/manifest.yml", "11.9.2");
 });
@@ -66,17 +66,17 @@ When("UpdateRugVersion manifest_version is v, package_version is ~11.9.2 for Upd
     psworld.editWith(editor, { manifest_version: v, package_version: "~11.9.2", v: "[7.4.3,13.11.2)" });
 });
 
-Then("fileContains .atomist/manifest.yml  requires:  + v + for UpdateRugVersion should update to version range in a manifest.yml", (p, world) => {
+Then("fileContains atomist manifest yml requires v for UpdateRugVersion should update to version range in a manifest yml", (p, world) => {
     let v = "[7.4.3,13.11.2)";
     return p.fileContains(".atomist/manifest.yml", 'requires: "' + v + '"');
 });
 
-Then("not result.fileContains(.atomist/manifest.yml, 0.6.0) for UpdateRugVersion should update to version range in a manifest.yml", (p, world) => {
+Then("not result fileContains atomist manifest yml 0 6 0 for UpdateRugVersion should update to version range in a manifest yml", (p, world) => {
     let v = "[7.4.3,13.11.2)";
     return !p.fileContains(".atomist/manifest.yml", "0.6.0");
 });
 
-Then("not result.fileContains(.atomist/manifest.yml, 11.9.2) for UpdateRugVersion should update to version range in a manifest.yml", (p, world) => {
+Then("not result fileContains atomist manifest yml 11 9 2 for UpdateRugVersion should update to version range in a manifest yml", (p, world) => {
     let v = "[7.4.3,13.11.2)";
     return !p.fileContains(".atomist/manifest.yml", "11.9.2");
 });
@@ -130,22 +130,22 @@ When("UpdateRugVersion manifest_version is v, package_version is ~11.9.2 for Upd
     psworld.editWith(editor, { manifest_version: v, package_version: "~11.9.2", v: "7.4.3" });
 });
 
-Then("fileContains .atomist/package.json  @atomist/rug: ~11.9.2 for UpdateRugVersion should update the version in a package.json", (p, world) => {
+Then("fileContains atomist package json atomist rug 11 9 2 for UpdateRugVersion should update the version in a package json", (p, world) => {
     let v = "7.4.3";
     return p.fileContains(".atomist/package.json", '"@atomist/rug": "~11.9.2"');
 });
 
-Then("fileContains .atomist/package.json  @college/dtc: ^3.5.7 for UpdateRugVersion should update the version in a package.json", (p, world) => {
+Then("fileContains atomist package json college dtc 3 5 7 for UpdateRugVersion should update the version in a package json", (p, world) => {
     let v = "7.4.3";
     return p.fileContains(".atomist/package.json", '"@college/dtc": "^3.5.7"');
 });
 
-Then("not result.fileContains(.atomist/package.json, 0.6.0) for UpdateRugVersion should update the version in a package.json", (p, world) => {
+Then("not result fileContains atomist package json 0 6 0 for UpdateRugVersion should update the version in a package json", (p, world) => {
     let v = "7.4.3";
     return !p.fileContains(".atomist/package.json", "0.6.0");
 });
 
-Then("not result.fileContains(.atomist/package.json, v) for UpdateRugVersion should update the version in a package.json", (p, world) => {
+Then("not result fileContains atomist package json v for UpdateRugVersion should update the version in a package json", (p, world) => {
     let v = "7.4.3";
     return !p.fileContains(".atomist/package.json", v);
 });
@@ -170,25 +170,25 @@ When("UpdateRugVersion for UpdateRugVersion should update the version in a squas
     psworld.editWith(editor, { manifest_version: "7.4.3", package_version: "~11.9.2" });
 });
 
-Then("fileContains .atomist/package.json  @atomist/rug: ~11.9.2 for UpdateRugVersion should update the version in a squashed package.json", (p, world) => {
+Then("fileContains atomist package json atomist rug 11 9 2 for UpdateRugVersion should update the version in a squashed package json", (p, world) => {
     let manifest_version = "7.4.3";
     let package_version = "~11.9.2";
     return p.fileContains(".atomist/package.json", '"@atomist/rug": "~11.9.2"');
 });
 
-Then("fileContains .atomist/package.json  @college/dtc: ^3.5.7 for UpdateRugVersion should update the version in a squashed package.json", (p, world) => {
+Then("fileContains atomist package json college dtc 3 5 7 for UpdateRugVersion should update the version in a squashed package json", (p, world) => {
     let manifest_version = "7.4.3";
     let package_version = "~11.9.2";
     return p.fileContains(".atomist/package.json", '"@college/dtc": "^3.5.7"');
 });
 
-Then("not result.fileContains(.atomist/package.json, 0.6.0) for UpdateRugVersion should update the version in a squashed package.json", (p, world) => {
+Then("not result fileContains atomist package json 0 6 0 for UpdateRugVersion should update the version in a squashed package json", (p, world) => {
     let manifest_version = "7.4.3";
     let package_version = "~11.9.2";
     return !p.fileContains(".atomist/package.json", "0.6.0");
 });
 
-Then("not result.fileContains(.atomist/package.json, manifest_version) for UpdateRugVersion should update the version in a squashed package.json", (p, world) => {
+Then("not result fileContains atomist package json manifest version for UpdateRugVersion should update the version in a squashed package json", (p, world) => {
     let manifest_version = "7.4.3";
     let package_version = "~11.9.2";
     return !p.fileContains(".atomist/package.json", manifest_version);
