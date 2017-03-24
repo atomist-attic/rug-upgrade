@@ -1,9 +1,10 @@
 # Atomist 'rug-upgrade'
 
-This [Rug][rug] project contains Rugs that help you migrate from one
-version of Rug to the next.
+This [Rug][doc] project contains Rugs that help you migrate from one
+version of [Rug][rug] to the next.
 
-[rug]: http://docs.atomist.com/
+[doc]: http://docs.atomist.com/
+[rug]: https://github.com/atomist/rug
 
 ## Rugs
 
@@ -32,7 +33,8 @@ $ rug edit atomist-rugs:rug-editors:TestsToTypeScript
 ```
 
 This will generate TypeScript Cucumber/Gherkin tests from each of the
-DSL `.rt` test files.  The DSL tests will not be touched.
+DSL `.rt` test files.  The DSL test files will not be touched.  If you
+are happy with the results, you can delete the DSL test files.
 
 ### UpdateRugVersion
 

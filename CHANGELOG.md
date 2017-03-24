@@ -7,7 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/atomist-rugs/rug-upgrade/compare/0.4.0...HEAD
+[Unreleased]: https://github.com/atomist-rugs/rug-upgrade/compare/0.5.0...HEAD
+
+## [0.5.0] - 2017-03-24
+
+[0.5.0]: https://github.com/atomist-rugs/rug-upgrade/compare/0.4.0...0.5.0
+
+Steps release
+
+### Changed
+
+-   The TypeScript test file containing the step definitions is now
+    named BlahSteps.ts
 
 ## [0.4.0] - 2017-03-21
 

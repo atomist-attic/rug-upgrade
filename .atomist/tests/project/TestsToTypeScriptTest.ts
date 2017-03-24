@@ -33,7 +33,7 @@ When("TestsToTypeScript edits the project", (p, world) => {
 });
 
 const featurePath = ".atomist/tests/project/SampleTest.feature";
-const tsPath = ".atomist/tests/project/SampleTest.ts";
+const tsPath = ".atomist/tests/project/SampleSteps.ts";
 
 Then("the sample feature files exists", (p, world) => {
     return p.fileExists(featurePath);

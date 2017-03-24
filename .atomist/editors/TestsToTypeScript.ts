@@ -36,7 +36,7 @@ export class TestsToTypeScript implements EditProject {
             }
 
             let gherkinPath = f.path().replace(/tests\/([A-Za-z0-9]*)\.rt$/, "tests/project/$1Test.feature");
-            let tsPath = f.path().replace(/tests\/([A-Za-z0-9]*)\.rt$/, "tests/project/$1Test.ts");
+            let tsPath = f.path().replace(/tests\/([A-Za-z0-9]*)\.rt$/, "tests/project/$1Steps.ts");
             if (project.fileExists(gherkinPath) || project.fileExists(tsPath)) {
                 console.log(`converted version of ${f.path()} exists`);
                 return;
